@@ -1,5 +1,6 @@
 package listener;
 
+import dao.UserDAO;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
@@ -14,6 +15,6 @@ public class InitializationListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
 
         ServletContext servletContext = sce.getServletContext();
-        servletContext.setAttribute("userService", new UserService(new BCryptPasswordEncoder()) );
+        servletContext.setAttribute("userService", new UserService(new BCryptPasswordEncoder(),new UserDAO()));
     }
 }
